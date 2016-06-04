@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+ backend: 
+   image: mariadb
+   environment:
+   - MYSQL_ROOT_PASSWORD=mysql123
+   mem_limit: 120m
+    
+ frontend: 
+    image: wordpress 
+    links: 
+     - backend:mariadb  
+    ports: 
+     - 8081:8081 
+    environment:
+     - WORDPRESS_DB_PASSWORD=wordpress
+    mem_limit: 120m
+
